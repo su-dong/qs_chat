@@ -1,6 +1,7 @@
 
 import './App.css';
 import Navigation from './Componts/Navigation/Navigation';
+import LogIn from './Componts/LogIn/LogIn';
 
 import React from 'react';
 
@@ -15,7 +16,11 @@ class App  extends React.Component {
 
   render(){
     return(
-      <Navigation page =  {this.state.page}/>
+      <div>
+        <Navigation currentPage =  {this.state.page}/>
+        
+        <LogIn/>
+      </div>
     );
   }
 }

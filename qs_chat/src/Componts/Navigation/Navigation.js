@@ -3,10 +3,11 @@ import logo from "./logo.png";
 import "./Navigation.css";
 
 
-const Navigation = (page) =>{
+const Navigation = (props) =>{
+
     
     
-    switch(page.page){
+    switch(props.currentPage){
 
         case "home":
             return(        
@@ -47,6 +48,7 @@ const Navigation = (page) =>{
             
             );
     }
+    
 }
 
 export default Navigation
