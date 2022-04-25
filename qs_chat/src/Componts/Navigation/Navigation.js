@@ -16,8 +16,8 @@ const Navigation = (props) =>{
                         <img src={logo} className="dib w4 h4 br-100" alt="Site Name"/>
                     </a>
                     <div className="dtc v-mid w-75 tr">
-                        <a className="f3 link dim black underline pa3 pointer" href="#" title="Register">Register</a>
-                        <a className="f3 link dim black underline pa3 pointer" href="#" title="Sign in">Sign In</a>
+                        <a className="f3 link dim black underline pa3 pointer" onClick={()=> props.onRouteChange('home', 'register')} href="#" title="Register">Register</a>
+                        <a className="f3 link dim black underline pa3 pointer" onClick={()=> props.onRouteChange('home', 'logIn')} href="#" title="Sign in">Sign In</a>
                     </div>
                 </nav>
             
@@ -29,7 +29,7 @@ const Navigation = (props) =>{
                         <img src={logo} className="dib w4 h4 br-100" alt="Site Name"/>
                     </a>
                     <div className="dtc v-mid w-75 tr">
-                        <a className="f3 link dim black underline pa3 pointer" href="#" title="Sign Out">Sign Out</a>
+                        <a className="f3 link dim black underline pa3 pointer" onClick={()=> props.onRouteChange('chatting', 'signOut')}href="#" title="Sign Out">Sign Out</a>
                     </div>
                 </nav>
             
@@ -41,8 +41,7 @@ const Navigation = (props) =>{
                         <img src={logo} className="dib w4 h4 br-100" alt="Site Name"/>
                     </a>
                     <div className="dtc v-mid w-75 tr">
-                        <a className="f3 link dim black underline pa3 pointer" href="#" title="Sign in">Sign In</a>
-                        <a className="f3 link dim black underline pa3 pointer" href="#" title="Sign Out">Sign Out</a>
+                        <a className="f3 link dim black underline pa3 pointer"onClick={()=> props.onRouteChange('register', 'any')} href="#" title="Sign in">Sign In</a>
                     </div>
                 </nav>
             
@@ -50,5 +49,7 @@ const Navigation = (props) =>{
     }
     
 }
+
+
 
 export default Navigation
