@@ -12,8 +12,27 @@ class App  extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      page: 'chatting'
+      page: 'chatting',
+      isSignedIn: false,
+      user:{
+        id: '',
+        name: '',
+        email: ''
+      }
+
     };
+  }
+
+  updateUser = (data) =>{
+    this.setState(
+      {
+        user:{
+          id: data.id,
+          name:data.name,
+          email:data.email
+        }
+      }
+    )
   }
 
   onRouteChange = (currentRoute, buttonClicked)=>{
@@ -59,7 +78,7 @@ class App  extends React.Component {
         return(
           <div>
             <Navigation currentPage =  {this.state.page} onRouteChange = {this.onRouteChange}/>
-            <Register/>
+            <Register updateUser = {this.updateUser} onRouteChange = {this.onRouteChange}/>
           </div>
         );
 
