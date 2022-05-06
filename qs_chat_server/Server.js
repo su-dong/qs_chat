@@ -85,6 +85,9 @@ server.post('/signIn', (request, response) =>{
     
     const email = request.body.email;
     const storedPwd = request.body.password;
+    console.log(request.body);
+
+    console.log('In signIn with email = ', email);
     
    db.select('email', 'password').from ('users_signin')
         .where('email', '=', email).then(

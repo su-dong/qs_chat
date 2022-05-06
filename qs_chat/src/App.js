@@ -1,5 +1,6 @@
 
 import './App.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 import Navigation from './Componts/Navigation/Navigation';
 import LogIn from './Componts/LogIn/LogIn';
@@ -36,20 +37,35 @@ class App  extends React.Component {
   }
 
   onRouteChange = (currentRoute, buttonClicked)=>{
+    console.log('in router change');
+    
     switch(currentRoute, buttonClicked){
-      case 'home', 'logIn':
+      case 'home' && 'logIn':
+        console.log(1);
         this.setState({page: 'home'});
         return;
-      case 'home', 'register':
+      case 'home'&& 'register':
+        console.log(2);
         this.setState({page:'register'});
         return;
-      case 'chatting', 'signOut':
+      case 'chatting'&& 'signOut':
+        console.log(3);
         this.setState({page:'home'});
         return;
-      case 'register', 'any':
+      case 'register'&&'any':
+        console.log(4);
         this.setState({page:'home'});
+        return;
+      case 'signIn'&&'any':
+        console.log(1);
+        console.log("in what needed");
+        this.setState({page:'chatting'});
         return;
     }
+  }
+
+  changeRouteTo = (nextPage)=>{
+    this.setState({page:nextPage});
   }
 
 
@@ -62,7 +78,7 @@ class App  extends React.Component {
           <div>
             <Navigation currentPage =  {this.state.page} onRouteChange = {this.onRouteChange} />
             
-            <LogIn/>
+            <LogIn changeRouteTo = {this.changeRouteTo} updateUser = {this.updateUser}/>
           </div>
         );
       case 'chatting':
