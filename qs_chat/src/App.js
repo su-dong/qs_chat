@@ -17,7 +17,7 @@ class App  extends React.Component {
       isSignedIn: false,
       user:{
         id: '',
-        name: '',
+        name: 'unknown',
         email: ''
       }
 
@@ -36,29 +36,16 @@ class App  extends React.Component {
     )
   }
 
-  onRouteChange = (currentRoute, buttonClicked)=>{
-    console.log('in router change');
+  onRouteChange = (changeTo)=>{
     
-    switch(currentRoute, buttonClicked){
-      case 'home' && 'logIn':
-        console.log(1);
-        this.setState({page: 'home'});
+    switch(changeTo){
+      case 'home' :
+        this.setState({page:'home'});
         return;
-      case 'home'&& 'register':
-        console.log(2);
+      case 'register':
         this.setState({page:'register'});
         return;
-      case 'chatting'&& 'signOut':
-        console.log(3);
-        this.setState({page:'home'});
-        return;
-      case 'register'&&'any':
-        console.log(4);
-        this.setState({page:'home'});
-        return;
-      case 'signIn'&&'any':
-        console.log(1);
-        console.log("in what needed");
+      case 'chatting':
         this.setState({page:'chatting'});
         return;
     }
@@ -76,7 +63,7 @@ class App  extends React.Component {
       case 'home':
         return(
           <div>
-            <Navigation currentPage =  {this.state.page} onRouteChange = {this.onRouteChange} />
+            <Navigation currentPage =  {this.state.page} onRouteChange = {this.onRouteChange} user = {this.state.user} />
             
             <LogIn changeRouteTo = {this.changeRouteTo} updateUser = {this.updateUser}/>
           </div>
@@ -84,7 +71,7 @@ class App  extends React.Component {
       case 'chatting':
         return(
           <div>
-            <Navigation currentPage =  {this.state.page} onRouteChange = {this.onRouteChange}/>
+            <Navigation currentPage =  {this.state.page} onRouteChange = {this.onRouteChange} user = {this.state.user}/>
 
             <Chat />
             
@@ -93,7 +80,7 @@ class App  extends React.Component {
       case 'register':
         return(
           <div>
-            <Navigation currentPage =  {this.state.page} onRouteChange = {this.onRouteChange}/>
+            <Navigation currentPage =  {this.state.page} onRouteChange = {this.onRouteChange} user = {this.state.user}/>
             <Register updateUser = {this.updateUser} onRouteChange = {this.onRouteChange}/>
           </div>
         );

@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import { Form, InputGroup,Button } from 'react-bootstrap'
+import io from 'socket.io-client'
 
 
-var testMsgBody = [{name:"aSender", msgText:"hello"}, {name:"otherSender", msgText:"hello"}];
-var messages = testMsgBody;
+var messages = [];
+var socket = io("http://localhost:5000/");
 
 export default function MessageSpace({userName}) {
 
@@ -13,9 +14,27 @@ export default function MessageSpace({userName}) {
 
     function handleSubmit(e){
         e.preventDefault();
-        messages.push({name:userName, msgText:text})
+        let newMessage = {name:userName, msgText:text};
+        messages.push(newMessage);
+        socket.emit('message', newMessage);
+        console.log('sent', newMessage);
         setText('')
     }
+
+    socket.on('message', function (data) {
+        console.log(data)
+        messages.push(data)
+        console.log(messages)
+    })
+
+    useEffect(()  =>  {
+        socket.on('message', function (data) {
+            console.log(data)
+            messages.push(data)
+            console.log(messages)
+        })
+        // Async Action
+      }, [messages])
 
    
 
