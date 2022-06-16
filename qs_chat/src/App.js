@@ -13,7 +13,7 @@ class App  extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      page: 'chatting',
+      page: 'home',
       isSignedIn: false,
       user:{
         id: '',
@@ -73,7 +73,7 @@ class App  extends React.Component {
           <div>
             <Navigation currentPage =  {this.state.page} onRouteChange = {this.onRouteChange} user = {this.state.user}/>
 
-            <Chat />
+            <Chat Name = {this.state.user.name}/>
             
           </div>
         );

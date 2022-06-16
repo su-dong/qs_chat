@@ -36,7 +36,7 @@ class Register extends React.Component {
         .then(response => response.json())
         .then(user =>{
             if(user){
-                this.props.onRouteChange('register', 'any');
+                this.props.onRouteChange('chatting');
                 this.props.updateUser(user);
             }
             

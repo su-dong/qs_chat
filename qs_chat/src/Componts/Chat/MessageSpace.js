@@ -3,38 +3,53 @@ import { Form, InputGroup,Button } from 'react-bootstrap'
 import io from 'socket.io-client'
 
 
-var messages = [];
-var socket = io("http://localhost:5000/");
+
+//var socket = io("http://localhost:5000/");
 
 export default function MessageSpace({userName}) {
 
+    const [msgList, setMsgList] = useState([]);
     const [text, setText] = useState('');
+    const [socket, setSocket] = useState(null);
 
 
+    
 
     function handleSubmit(e){
         e.preventDefault();
         let newMessage = {name:userName, msgText:text};
-        messages.push(newMessage);
+        
+        
         socket.emit('message', newMessage);
         console.log('sent', newMessage);
-        setText('')
+
+        setMsgList( oldMsg =>
+            [...oldMsg, newMessage]
+        );
+
+        setText('');
+        console.log(msgList)
+
+        
     }
 
-    socket.on('message', function (data) {
-        console.log(data)
-        messages.push(data)
-        console.log(messages)
-    })
+    
+    
 
     useEffect(()  =>  {
-        socket.on('message', function (data) {
-            console.log(data)
-            messages.push(data)
-            console.log(messages)
-        })
-        // Async Action
-      }, [messages])
+
+        if(socket === null){
+            setSocket(io("http://localhost:5000/"))
+        }
+        if(socket){
+            socket.on('chatMessage', function (data) {
+                console.log('got new message',data)
+                setMsgList( oldMsg =>
+                    [...oldMsg, data]
+                );
+            })
+        }
+    }, [socket])
 
    
 
@@ -43,9 +58,10 @@ export default function MessageSpace({userName}) {
         <div className='d-flex flex-column flex-grow-1 border-dark '>
             <div style = {{height:"425px"}} className='flex-grow-1 overflow-auto border-dark bg-light'>
                 <div className = "d-flex flex-column align-items-start justify-content-end px-3 ">
-
-                    {messages.map(
+                    {console.log('before', msgList)}
+                    {msgList.map(                
                         currMessage =>{
+                            console.log("current msg is ", currMessage)
                             
                             return(
                                 <div key={index++} className = "my-1 d-flex flex-column">
@@ -57,6 +73,8 @@ export default function MessageSpace({userName}) {
                                     </div>
                                 </div>
                             )
+
+                            
                         }
                     )}
 
