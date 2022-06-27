@@ -27,7 +27,7 @@ The back-end side implemented by two servers and one two databases.
 
 Two related databases are used to store users' information. That is shown following.
 
-![tables](C:\Users\sudon\Desktop\qs_chat\Pics\tables.png)
+![tables](\qs_chat\Pics\tables.png)
 
   
 
