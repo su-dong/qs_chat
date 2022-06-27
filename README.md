@@ -27,7 +27,13 @@ The back-end side implemented by two servers and one two databases.
 
 Two related databases are used to store users' information. That is shown following.
 
-![tables](.\Pics\tables.png)
+![tables](https://raw.githubusercontent.com/su-dong/qs_chat/main/Pics/tables.png)
+
+
+
+
+
+
 
 
 
@@ -56,19 +62,19 @@ Two related databases are used to store users' information. That is shown follow
 
 #### New user
 
-- register an account in the register page that is shown as following.![register](.\Pics\register.png)After register, it will automatically enter chatting room.
+- register an account in the register page that is shown as following.![register](https://raw.githubusercontent.com/su-dong/qs_chat/main/Pics/register.png)After register, it will automatically enter chatting room.
 
   #### Returning Users
 
-  - Returning Users can login on the home page use their account that is shown as following.![](.\Pics\SignIn.png)
+  - Returning Users can login on the home page use their account that is shown as following.![](https://raw.githubusercontent.com/su-dong/qs_chat/main/Pics/SignIn.png)
 
 
 
 #### Chatting
 
-- Users can chat in the chatting page that is shown as following.![test1_chat](.\Pics\test1_chat.png)
+- Users can chat in the chatting page that is shown as following.![test1_chat](https://raw.githubusercontent.com/su-dong/qs_chat/main/Pics/test1_chat.png)
 
-![](.\Pics\Chating.png)
+![](https://raw.githubusercontent.com/su-dong/qs_chat/main/Pics/Chating.png)
 
 #### Exit
 
