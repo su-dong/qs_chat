@@ -61,7 +61,7 @@ class LogIn extends React.Component{
                         <label className="db fw6 lh-copy f5" htmlFor="password">Password</label>
                         <input className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="password" name="password"  id="password" onChange = {this.onPasswordInput}/>
                     </div>
-                    <label className="pa0 ma0 lh-copy f6 pointer"><input type="checkbox"/> Remember me</label>
+                    
                     </fieldset>
                     <div className="">
                         <input 
@@ -70,10 +70,6 @@ class LogIn extends React.Component{
                             value="Sign in"
                             onClick={this.onSubmit}
                         />
-                    </div>
-                    <div className="lh-copy mt3">
-                        <a href="#0" className="f5 link dim black db">Sign up</a>
-                        <a href="#0" className="f5 link dim black db">Forgot your password?</a>
                     </div>
                 </div>
             </main>

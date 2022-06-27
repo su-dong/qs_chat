@@ -16,7 +16,6 @@ const Chat = (props)=>{
     return(
         <div className="rowC">
     
-            <SideBar id = {id}/>
             <MessageSpace userName={userName}/>
         </div>
         
